@@ -3,6 +3,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music player</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -15,6 +17,9 @@
         <!-- Dashboard -->
         <div class="dashboard">
           <!-- Header -->
+          <div class="btn-light active">
+            <i class="far fa-moon"></i>
+          </div>
           <header>
             <h4>Now playing:</h4>
             <h2>String 57th & 9th</h2>
@@ -71,11 +76,13 @@
         const repeatBtn = $('.btn-repeat');
         const progress = $('#progress');
         const playlist = $('.playlist');
+        const themeBtn = $('.btn-light');
         const app = {
           currentIndex: 0,
           isPlaying: false,
           isRandom: false,
           isRepeat: false,
+          isDarkTheme: true,
           config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {},
           playedSong: [],
           songs: [
@@ -259,6 +266,13 @@
                 
               }
             }
+            //Xử lý dark theme
+            themeBtn.onclick = function() {
+              _this.isDarkTheme = !_this.isDarkTheme;
+              _this.setConfig('isDarkTheme', _this.isDarkTheme);
+              themeBtn.classList.toggle('active',_this.isDarkTheme);
+              _this.changeTheme();
+            }
           },
           defineProperties: function() {
             Object.defineProperty(this, 'currentSong', {
@@ -280,6 +294,7 @@
           loadConfig:function() {
             this.isRandom = this.config.isRandom;
             this.isRepeat = this.config.isRepeat;
+            this.isDarkTheme = this.config.isDarkTheme;
           },
           nextSong: function() {
             this.currentIndex++;
@@ -308,6 +323,26 @@
             };
             this.loadCurrentSong();     
           },
+          changeTheme: function() {
+            const dashboard = $('.dashboard');
+            const progress = $('.progress');
+            const controlBtn = $$('.control .btn')
+            if(!this.isDarkTheme) {
+              document.body.style.background = '#f5f5f5';
+              document.documentElement.style.setProperty('--text-color', '#333');
+              document.documentElement.style.setProperty('--dashboard-color', '#fff');
+              document.documentElement.style.setProperty('--btn-color', '#666');
+              document.documentElement.style.setProperty('--song-color', '#fff');
+              progress.classList.add('light');
+            } else {
+              document.body.style.background = '#51557E';
+              document.documentElement.style.setProperty('--text-color', '#fff');
+              document.documentElement.style.setProperty('--dashboard-color', '#1B2430');
+              document.documentElement.style.setProperty('--btn-color', '#fff');
+              document.documentElement.style.setProperty('--song-color', '#1B2430');
+              progress.classList.remove('light');
+            }
+          },
           activeSong: function(prevIndex) {
             const getCurrentSong = $(`.song.s${this.currentIndex}`);
             const getPrevSong = $(`.song.s${prevIndex}`);
@@ -321,15 +356,16 @@
             if(prevIndex != null) { getPrevSong.classList.remove('active'); }
           },
           start: function() {
-            this.loadConfig();
+            this.loadConfig(); 
             this.defineProperties(); //Định nghĩa các thuộc tính cho object 
             this.handleEvents(); //Lắng nghe và xử lý các sự kiện
             this.loadCurrentSong(); //Tải thông tin bài hát đầu tiên vào UI khi chạy ứng dụng
             this.render(); //Render playlist
             this.activeSong();  
-
+            this.changeTheme();
             randomBtn.classList.toggle('active',this.isRandom);
             repeatBtn.classList.toggle('active',this.isRepeat);
+            themeBtn.classList.toggle('active',this.isDarkTheme);
           }
         };
         
