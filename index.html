@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
-    
 </head>
 
 <body>
@@ -140,6 +139,48 @@
                     path: './assets/music/Right Now (Na Na Na) - Akon - NhacCuaTui.MP3',
                     image: './assets/img/picture.jpg'
                   },
+                  {
+                    name:'Beggin',
+                    singer:'Madcon',
+                    path: './assets/music/Beggin_ - Madcon [FLAC Lossless].flac',
+                    image: './assets/img/picture.jpg'
+                  },
+                  {
+                    name:'Fireflies',
+                    singer:'Owl City',
+                    path: './assets/music/Fireflies - Owl City [Lossless_FLAC].flac',
+                    image: './assets/img/picture.jpg'
+                  },
+                  {
+                    name:'Haven\'t Met You Yet',
+                    singer:'Michael Bublé',
+                    path: './assets/music/Haven_t Met You Yet - Michael Buble [FLAC Lossless].flac',
+                    image: './assets/img/picture.jpg'
+                  },
+                  {
+                    name:'Iridescent',
+                    singer:'Linkin Park',
+                    path: './assets/music/Iridescent - Linkin Park [Lossless_FLAC].flac',
+                    image: './assets/img/picture.jpg'
+                  },
+                  {
+                    name:'Jar Of Hearts',
+                    singer:'Christina Perri',
+                    path: './assets/music/Jar Of Hearts - Christina Perri [Lossless_FLAC].flac',
+                    image: './assets/img/picture.jpg'
+                  },
+                  {
+                    name:'Love You Like A Love Song',
+                    singer:'Selena Gomez',
+                    path: './assets/music/Love__You__Like__A__Love__Song - Selena [Lossless_FLAC].flac',
+                    image: './assets/img/picture.jpg'
+                  },
+                  {
+                    name:'Smile',
+                    singer:'Avril Lavigne',
+                    path: './assets/music/Smile - Avril Lavigne.mp3',
+                    image: './assets/img/picture.jpg'
+                  },
           ],
           setConfig: function(key, value) {
             this.config[key] = value;
@@ -154,7 +195,7 @@
                     <h3 class="title">${song.name}</h3>
                     <p class="author">${song.singer}</p>
                   </div>
-                  <div class="option">
+                  <div class="option" style="color: transparent">
                     <i class="fas fa-ellipsis-h"></i>
                   </div>
                 </div>
@@ -328,18 +369,24 @@
             const progress = $('.progress');
             const controlBtn = $$('.control .btn')
             if(!this.isDarkTheme) {
-              document.body.style.background = '#f5f5f5';
+              document.body.style.background = 'url(./assets/img/bg/wp2448301.jpg)';
+              document.documentElement.style.setProperty('--background-color', '#f5f5f5');
               document.documentElement.style.setProperty('--text-color', '#333');
-              document.documentElement.style.setProperty('--dashboard-color', '#fff');
+              document.documentElement.style.setProperty('--dashboard-color', 'rgb(255,255,255,.2)');
+              document.documentElement.style.setProperty('--m-dashboard-color', '#fff');
               document.documentElement.style.setProperty('--btn-color', '#666');
-              document.documentElement.style.setProperty('--song-color', '#fff');
+              document.documentElement.style.setProperty('--song-color', 'rgb(255,255,255,.2)');
+              document.documentElement.style.setProperty('--author-color', '#404040');
               progress.classList.add('light');
             } else {
-              document.body.style.background = '#51557E';
+              document.body.style.background = 'url(./assets/img/bg/wp2448347.jpg';
+              document.documentElement.style.setProperty('--background-color', '#51557E');
               document.documentElement.style.setProperty('--text-color', '#fff');
-              document.documentElement.style.setProperty('--dashboard-color', '#1B2430');
+              document.documentElement.style.setProperty('--dashboard-color', 'rgb(0,0,0,.5)');
+              document.documentElement.style.setProperty('--m-dashboard-color', '#1B2430');
               document.documentElement.style.setProperty('--btn-color', '#fff');
-              document.documentElement.style.setProperty('--song-color', '#1B2430');
+              document.documentElement.style.setProperty('--song-color', 'rgb(0,0,0,.5)');
+              document.documentElement.style.setProperty('--author-color', '#999');
               progress.classList.remove('light');
             }
           },
