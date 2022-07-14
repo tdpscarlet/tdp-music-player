@@ -17,6 +17,7 @@
 
 body {
   background-color: var(--background-color); /*#51557E*/
+  transition: background-image .5s ease-out;
 }
 
 html {
@@ -166,6 +167,7 @@ html {
     margin-top: 426px;
     padding: 12px;
     background-color: var(--background-color);
+    
   }
   
   .song {
@@ -249,6 +251,7 @@ html {
     flex-direction: column;
     width: 600px;
     backdrop-filter: blur(10px);
+    transition: background-color .5s ease;
   }
   
   /* HEADER */
@@ -362,6 +365,7 @@ html {
         margin: 0 0 0 12px;
         max-height: 30rem;
         backdrop-filter: blur(10px);
+        transition: background-color .5s ease;
   }
 
   .playlist::-webkit-scrollbar {
@@ -377,6 +381,7 @@ html {
     padding: 8px 16px;
     border-radius: 5px;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    transition: background-color .5s ease;
   }
   
   .song.active {
