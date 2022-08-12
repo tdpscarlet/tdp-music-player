@@ -9,414 +9,65 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
 </head>
 
 <body>
-    <div class="player">
-        <!-- Dashboard -->
-        <div class="dashboard">
-          <!-- Header -->
-          <div class="btn-light active">
-            <i class="far fa-moon"></i>
-          </div>
-          <header>
-            <h4>Now playing:</h4>
-            <h2>String 57th & 9th</h2>
-            <h3>Singer</h3>
-          </header>
-      
-          <!-- CD -->
-          <div class="cd">
-            <div class="cd-thumb" style="background-image: url('https://i.ytimg.com/vi/jTLhQf5KJSc/maxresdefault.jpg')">
-            </div>
-          </div>
-      
-          <!-- Control -->
-          <div class="control">
-            <div class="btn btn-repeat">
-              <i class="fas fa-redo"></i>
-            </div>
-            <div class="btn btn-prev">
-              <i class="fas fa-step-backward"></i>
-            </div>
-            <div class="btn btn-toggle-play">
-              <i class="fas fa-pause icon-pause"></i>
-              <i class="fas fa-play icon-play"></i>
-            </div>
-            <div class="btn btn-next">
-              <i class="fas fa-step-forward"></i>
-            </div>
-            <div class="btn btn-random">
-              <i class="fas fa-random"></i>
-            </div>
-          </div>
-      
-          <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
-      
-          <audio id="audio" src=""></audio>
-        </div>
-      
-        <!-- Playlist -->
-        <div class="playlist"></div>
+  <div class="player">
+    <div class="my-playlists"></div>
+    <!-- Dashboard -->
+    <div class="dashboard">
+      <!-- Header -->
+      <div class="btn-playlist">
+        <i class="fas fa-list-ul"></i>
       </div>
-
-      <script>
-        const $ = document.querySelector.bind(document);
-        const $$ = document.querySelectorAll.bind(document);
-        const PLAYER_STORAGE_KEY = 'TDP_PLAYER';
-        const player = $('.player');
-        const heading = $('header h2');
-        const cdThumb = $('.cd-thumb');
-        const audio = $('#audio');
-        const playBtn = $('.btn-toggle-play');
-        const nextBtn = $('.btn-next');
-        const prevBtn = $('.btn-prev');
-        const randomBtn = $('.btn-random');
-        const repeatBtn = $('.btn-repeat');
-        const progress = $('#progress');
-        const playlist = $('.playlist');
-        const themeBtn = $('.btn-light');
-        const app = {
-          currentIndex: 0,
-          isPlaying: false,
-          isRandom: false,
-          isRepeat: false,
-          isDarkTheme: true,
-          config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {},
-          playedSong: [],
-          songs: [
-                  {
-                    name:'4 In The Morning',
-                    singer:'Gwen Stefani',
-                    path: './assets/music/4 In The Morning - Gwen Stefani [Lossless_FLAC].flac',
-                    image: './assets/img/picture.jpg'
-                  },
-                  {
-                    name:'Chasing Pavements',
-                    singer:'Adele',
-                    path: './assets/music/Chasing Pavements - Adele [FLAC Lossless].flac',
-                    image: './assets/img/picture.jpg'
-                  },
-                  {
-                    name:'Grenade',
-                    singer:'Bruno Mars',
-                    path: './assets/music/Grenade - Bruno Mars [Lossless_FLAC].flac',
-                    image: './assets/img/picture.jpg'
-                  },
-                  {
-                    name:'Insomnia',
-                    singer:'Craig David',
-                    path: './assets/music/Insomnia - Craig David [Lossless_FLAC].flac',
-                    image: './assets/img/picture.jpg'
-                  },
-                  {
-                    name:'Kiss Me Thru The Phone',
-                    singer:'Soulja Boy',
-                    path: './assets/music/Kiss Me Thru The Phone - Soulja Boy_ Sam [FLAC Lossless].flac',
-                    image: './assets/img/picture.jpg'
-                  },
-                  {
-                    name:'Littlest Things',
-                    singer:'Lily Allen',
-                    path: './assets/music/Littlest Things - Lily Allen [Lossless_FLAC].flac',
-                    image: './assets/img/picture.jpg'
-                  },
-                  {
-                    name:'Meet Me Halfway',
-                    singer:'The Black Eyed Peas',
-                    path: './assets/music/Meet Me Halfway - The Black Eyed Peas [Lossless_FLAC].flac',
-                    image: './assets/img/picture.jpg'
-                  },
-                  {
-                    name:'Rain',
-                    singer:'Mika',
-                    path: './assets/music/Rain - Mika [FLAC Lossless].flac',
-                    image: './assets/img/picture.jpg'
-                  },
-                  {
-                    name:'Right Now (Na Na Na)',
-                    singer:'Akon',
-                    path: './assets/music/Right Now (Na Na Na) - Akon - NhacCuaTui.MP3',
-                    image: './assets/img/picture.jpg'
-                  },
-                  {
-                    name:'Beggin',
-                    singer:'Madcon',
-                    path: './assets/music/Beggin_ - Madcon [FLAC Lossless].flac',
-                    image: './assets/img/picture.jpg'
-                  },
-                  {
-                    name:'Fireflies',
-                    singer:'Owl City',
-                    path: './assets/music/Fireflies - Owl City [Lossless_FLAC].flac',
-                    image: './assets/img/picture.jpg'
-                  },
-                  {
-                    name:'Haven\'t Met You Yet',
-                    singer:'Michael Bublé',
-                    path: './assets/music/Haven_t Met You Yet - Michael Buble [FLAC Lossless].flac',
-                    image: './assets/img/picture.jpg'
-                  },
-                  {
-                    name:'Iridescent',
-                    singer:'Linkin Park',
-                    path: './assets/music/Iridescent - Linkin Park [Lossless_FLAC].flac',
-                    image: './assets/img/picture.jpg'
-                  },
-                  {
-                    name:'Jar Of Hearts',
-                    singer:'Christina Perri',
-                    path: './assets/music/Jar Of Hearts - Christina Perri [Lossless_FLAC].flac',
-                    image: './assets/img/picture.jpg'
-                  },
-                  {
-                    name:'Love You Like A Love Song',
-                    singer:'Selena Gomez',
-                    path: './assets/music/Love__You__Like__A__Love__Song - Selena [Lossless_FLAC].flac',
-                    image: './assets/img/picture.jpg'
-                  },
-                  {
-                    name:'Smile',
-                    singer:'Avril Lavigne',
-                    path: './assets/music/Smile - Avril Lavigne.mp3',
-                    image: './assets/img/picture.jpg'
-                  },
-          ],
-          setConfig: function(key, value) {
-            this.config[key] = value;
-            localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config));
-          },
-          render: function() {
-            const htmls = this.songs.map((song, index) => {
-              return `
-                <div class="song s${index}" data-index-number="${index}">
-                  <div class="thumb" style="background-image: url(${song.image})"></div>
-                  <div class="body">
-                    <h3 class="title">${song.name}</h3>
-                    <p class="author">${song.singer}</p>
-                  </div>
-                  <div class="option" style="color: transparent">
-                    <i class="fas fa-ellipsis-h"></i>
-                  </div>
-                </div>
-              `
-            });
-            $('.playlist').innerHTML = htmls.join('');
-          },
-          handleEvents: function () {
-            const _this = this;
-            const cd = $('.cd');
-            const cdWidth = cd.offsetWidth;
-            
-            //Xử lý phóng to/thu nhỏ
-            document.onscroll = function() {
-              const scrollTop = document.documentElement.scrollTop || window.scrollY;
-              const newCdWidth = cdWidth - scrollTop;
-              cd.style.width = newCdWidth > 0 ? newCdWidth + 'px' : 0;
-              cd.style.opacity = newCdWidth / cdWidth;
-            };
-            //Xử lý cd quay
-            const cdThumbAnimate = cdThumb.animate([
-              { transform:'rotate(360deg)' }
-            ], {
-              duration: 10000,
-              iterations: Infinity
-            });
-            cdThumbAnimate.pause();
-            //Xử lý play/pause
-            playBtn.onclick = function() {
-              if(_this.isPlaying) {
-                audio.pause();
-              } else {
-                audio.play();
-              }
-            };
-            audio.onplay = function() {
-              _this.isPlaying = true;
-              player.classList.add('playing');
-              cdThumbAnimate.play();
-            };
-            audio.onpause = function() {
-              _this.isPlaying = false;
-              player.classList.remove('playing');
-              cdThumbAnimate.pause();
-            };
-            //Xử lý thanh progress
-            audio.ontimeupdate = function() {
-              if(audio.duration) {
-                const progressPercent = Math.floor(audio.currentTime / audio.duration * 100);
-                progress.value = progressPercent;
-              }
-            };
-            //Xử lý tua song
-            progress.oninput = function(e) {
-              const seekTime = audio.duration / 100 * e.target.value;
-              audio.currentTime = seekTime;
-            }
-            //Xử lý next/prev
-            nextBtn.onclick = function() {
-              const prevIndex = _this.currentIndex;
-              if(_this.isRandom) {
-                _this.playRandom();
-              } else {
-                _this.nextSong();
-              }
-              audio.play();
-              _this.activeSong(prevIndex);
-            }
-            prevBtn.onclick = function() {
-              const prevIndex = _this.currentIndex;
-              if(_this.isRandom) {
-                _this.playRandom();
-              } else {
-                _this.prevSong();
-              }
-              audio.play();
-              _this.activeSong(prevIndex);
-            }
-            //Xử lý random
-            randomBtn.onclick = function() {
-              _this.isRandom = !_this.isRandom;
-              _this.setConfig('isRandom', _this.isRandom);
-              randomBtn.classList.toggle('active',_this.isRandom);
-            }
-            //Xử lý khi hết bài hát
-            audio.onended = function() {
-              if(!_this.isRepeat) {
-                nextBtn.click();
-              }
-              audio.play();
-            }
-            //Xử lý repeat
-            repeatBtn.onclick = function() {
-              _this.isRepeat = !_this.isRepeat;
-              _this.setConfig('isRepeat', _this.isRepeat);
-              repeatBtn.classList.toggle('active',_this.isRepeat);
-            }
-            //Xử ý khi user nhấn vào playlist
-            playlist.onclick = function(e) {
-              const songNode = e.target.closest('.song:not(.active)');
-              const prevIndex = _this.currentIndex;
-              if(songNode || e.target.closest('.option')) {
-                _this.currentIndex = songNode.dataset.indexNumber;
-                _this.loadCurrentSong();
-                _this.activeSong(prevIndex);
-                audio.play();
-              }
-              if(e.target.closest('.option')) {
-                
-              }
-            }
-            //Xử lý dark theme
-            themeBtn.onclick = function() {
-              _this.isDarkTheme = !_this.isDarkTheme;
-              _this.setConfig('isDarkTheme', _this.isDarkTheme);
-              themeBtn.classList.toggle('active',_this.isDarkTheme);
-              _this.changeTheme();
-            }
-          },
-          defineProperties: function() {
-            Object.defineProperty(this, 'currentSong', {
-              get: function() {
-                return this.songs[this.currentIndex];
-              }
-            });
-          },
-          loadCurrentSong: function() {
-            const heading = $('header h2');
-            const singer = $('header h3');
-            const cdThumb = $('.cd-thumb');
-            const audio = $('#audio');
-            heading.textContent = this.currentSong.name;
-            singer.textContent = this.currentSong.singer;
-            cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`;
-            audio.src = this.currentSong.path;
-          },
-          loadConfig:function() {
-            this.isRandom = this.config.isRandom;
-            this.isRepeat = this.config.isRepeat;
-            this.isDarkTheme = this.config.isDarkTheme;
-          },
-          nextSong: function() {
-            this.currentIndex++;
-            if(this.currentIndex >= this.songs.length) {
-              this.currentIndex = 0;
-            }
-            this.loadCurrentSong();     
-          },
-          prevSong: function() {
-            this.currentIndex--;
-            if(this.currentIndex < 0) {
-              this.currentIndex = this.songs.length - 1;
-            }
-            this.loadCurrentSong();     
-          },
-          playRandom: function() {
-            let newIndex;
-            do{
-              newIndex = Math.floor(Math.random() * this.songs.length);
-            } while (this.playedSong.includes(newIndex) || newIndex === this.currentIndex);
-            this.currentIndex = newIndex;
-            this.playedSong.push(this.currentIndex);
-            if(this.playedSong.length >= this.songs.length)
-            {
-              this.playedSong = [];
-            };
-            this.loadCurrentSong();     
-          },
-          changeTheme: function() {
-            const dashboard = $('.dashboard');
-            const progress = $('.progress');
-            const controlBtn = $$('.control .btn')
-            if(!this.isDarkTheme) {
-              document.body.style.backgroundImage = 'url(./assets/img/bg/wp2448301.jpg)';
-              document.documentElement.style.setProperty('--background-color', '#f5f5f5');
-              document.documentElement.style.setProperty('--text-color', '#333');
-              document.documentElement.style.setProperty('--dashboard-color', 'rgb(255,255,255,.2)');
-              document.documentElement.style.setProperty('--m-dashboard-color', '#fff');
-              document.documentElement.style.setProperty('--btn-color', '#666');
-              document.documentElement.style.setProperty('--song-color', 'rgb(255,255,255,.2)');
-              document.documentElement.style.setProperty('--author-color', '#404040');
-              progress.classList.add('light');
-            } else {
-              document.body.style.backgroundImage = 'url(./assets/img/bg/wp2448347.jpg';
-              document.documentElement.style.setProperty('--background-color', '#51557E');
-              document.documentElement.style.setProperty('--text-color', '#fff');
-              document.documentElement.style.setProperty('--dashboard-color', 'rgb(0,0,0,.5)');
-              document.documentElement.style.setProperty('--m-dashboard-color', '#1B2430');
-              document.documentElement.style.setProperty('--btn-color', '#fff');
-              document.documentElement.style.setProperty('--song-color', 'rgb(0,0,0,.5)');
-              document.documentElement.style.setProperty('--author-color', '#999');
-              progress.classList.remove('light');
-            }
-          },
-          activeSong: function(prevIndex) {
-            const getCurrentSong = $(`.song.s${this.currentIndex}`);
-            const getPrevSong = $(`.song.s${prevIndex}`);
-            getCurrentSong.classList.add('active');
-            setTimeout(() => {
-              getCurrentSong.scrollIntoView({
-                behavior: 'smooth',
-                block: 'end',
-              });
-            }, 300);
-            if(prevIndex != null) { getPrevSong.classList.remove('active'); }
-          },
-          start: function() {
-            this.loadConfig(); 
-            this.defineProperties(); //Định nghĩa các thuộc tính cho object 
-            this.handleEvents(); //Lắng nghe và xử lý các sự kiện
-            this.loadCurrentSong(); //Tải thông tin bài hát đầu tiên vào UI khi chạy ứng dụng
-            this.render(); //Render playlist
-            this.activeSong();  
-            this.changeTheme();
-            randomBtn.classList.toggle('active',this.isRandom);
-            repeatBtn.classList.toggle('active',this.isRepeat);
-            themeBtn.classList.toggle('active',this.isDarkTheme);
-          }
-        };
-        
-      app.start();
-      </script>
+      <div class="btn-light active">
+        <i class="far fa-moon"></i>
+      </div>
+      
+      <header>
+        <h4>Now playing:</h4>
+        <h2>String 57th & 9th</h2>
+        <h3>Singer</h3>
+      </header>
+  
+      <!-- CD -->
+      <div class="cd">
+        <div class="cd-thumb" style="background-image: url('https://i.ytimg.com/vi/jTLhQf5KJSc/maxresdefault.jpg')">
+        </div>
+      </div>
+  
+      <!-- Control -->
+      <div class="control">
+        <div class="btn btn-repeat">
+          <i class="fas fa-redo"></i>
+        </div>
+        <div class="btn btn-prev">
+          <i class="fas fa-step-backward"></i>
+        </div>
+        <div class="btn btn-toggle-play">
+          <i class="fas fa-pause icon-pause"></i>
+          <i class="fas fa-play icon-play"></i>
+        </div>
+        <div class="btn btn-next">
+          <i class="fas fa-step-forward"></i>
+        </div>
+        <div class="btn btn-random">
+          <i class="fas fa-random"></i>
+        </div>
+      </div>
+  
+      <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
+  
+      <audio id="audio" src=""></audio>
+    </div>
+  
+    <!-- Playlist -->
+    <div class="playlist"></div>
+  </div>
+  
+  <script src="./data/playlists.js"></script>
+  <script src="./data/songlist.js"></script>
+  <script src="./main.js"></script>
 </body>
 </html>
