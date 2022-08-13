@@ -1,213 +1,268 @@
 @media (max-width: 1023px) {
-    .player {
-      position: relative;
-      max-width: 480px;
-      margin: 0 auto;
-    }
-    
-    .player .icon-pause {
-      display: none;
-    }
-    
-    .player.playing .icon-pause {
-      display: inline-block;
-    }
-    
-    .player.playing .icon-play {
-      display: none;
-    }
-    
-    .dashboard {
-      padding: 16px 16px 14px;
-      background-color: var(--m-dashboard-color);
-      position: fixed;
-      top: 0;
-      width: 100%;
-      max-width: 480px;
-      border-bottom: 1px solid var(--dashboard-color);
-    }
-
-    /* HEADER */
-    header {
-      text-align: center;
-      margin-bottom: 10px;
-    }
-    
-    header h4 {
-      color: var(--primary-color);
-      font-size: 12px;
-    }
-    
-    header h2 {
-      color: var(--text-color);
-      font-size: 20px;
-    }
   
-    header h3 {
-      color: var(--text-color);
-      font-size: 15px;
-    }
-  
-  
-    
-    /* CD */
-    .cd {
-      display: flex;
-      margin: auto;
-      width: 200px;
-    }
-  
-    .cd-thumb {
-      width: 100%;
-      padding-top: 100%;
-      border-radius: 50%;
-      background-color: #333;
-      background-size: cover;
-      margin: auto;
-    }
-    
-    /* CONTROL */
-    .control {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      padding: 18px 0 8px 0;
-    }
-    
-    .control .btn {
-      color: var(--btn-color); 
-      padding: 18px;
-      font-size: 18px;
-    }
-  
-    .control .btn.active {
-      color: var(--primary-color);
-    }
-    
-    .control .btn-toggle-play {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      font-size: 24px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: var(--primary-color);
-    }
-  
-    .btn-light {
-      position: absolute;
-      right: 0;
-      top: 0;
-      margin: 10px;
-      padding: 10px;
-      color: var(--btn-color);
-      border-radius: 10px;
-      font-size: 24px;
-    }
-
-    .btn-playlist {
-      position: absolute;
-      left: 0;
-      top: 0;
-      margin: 10px;
-      padding: 10px;
-      color: var(--btn-color);
-      font-size: 24px;
-    }
-  
-    .active {
-      color: var(--primary-color);
-    }
-    
-    .progress {
-      width: 100%;
-      -webkit-appearance: none;
-      height: 6px;
-      background: #fff;
-      outline: none;
-      -webkit-transition: 0.2s;
-      transition: opacity 0.2s;
-    }
-  
-    .progress.light {
-      opacity: 0.7;
-      background: #d3d3d3;
-    }
-  
-    .progress::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 12px;
-      height: 6px;
-      background-color: var(--primary-color);
-      cursor: pointer;
-    }
-    
-    /* PLAYLIST */
-    .playlist {
-      margin-top: 426px;
-      padding: 12px;
-      background-color: var(--background-color);
-    }
-    
-    .my-playlists{
-      display: none;
-    }
-
-    .song {
-      display: flex;
-      align-items: center;
-      margin-bottom: 12px;
-      background-color: var(--dashboard-color);
-      padding: 8px 16px;
-      border-radius: 5px;
-      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
-    }
-    
-    .song.active {
-      background-color: var(--primary-color);
-    }
-    
-    .song:active {
-      opacity: 0.8;
-    }
-    
-    .song.active .option,
-    .song.active .author,
-    .song.active .title {
-      color: #fff;
-    }
-    
-    .song .thumb {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background-size: cover;
-      margin: 0 8px;
-    }
-    
-    .song .body {
-      flex: 1;
-      padding: 0 16px;
-    }
-    
-    .song .title {
-      font-size: 18px;
-      color: var(--text-color);
-    }
-    
-    .song .author {
-      font-size: 12px;
-      color: #999;
-    }
-    
-    .song .option {
-      padding: 16px 8px;
-      color: #999;
-      font-size: 18px;
-    }
-
+  .player {
+    position: relative;
   }
+  
+  .player .icon-pause {
+    display: none;
+  }
+  
+  .player.playing .icon-pause {
+    display: inline-block;
+  }
+  
+  .player.playing .icon-play {
+    display: none;
+  }
+  
+  .dashboard {
+    padding: 16px 16px 14px;
+    background-color: var(--m-dashboard-color);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    border-bottom: 1px solid var(--dashboard-color);
+  }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  header h4 {
+    color: var(--primary-color);
+    font-size: 12px;
+  }
+  
+  header h2 {
+    color: var(--text-color);
+    font-size: 20px;
+  }
+
+  header h3 {
+    color: var(--text-color);
+    font-size: 15px;
+  }
+
+
+  
+  /* CD */
+  .cd {
+    display: flex;
+    margin: auto;
+    width: 200px;
+  }
+
+  .cd-thumb {
+    width: 100%;
+    padding-top: 100%;
+    border-radius: 50%;
+    background-color: #333;
+    background-size: cover;
+    margin: auto;
+  }
+  
+  /* CONTROL */
+  .control {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 18px 0 8px 0;
+  }
+  
+  .control .btn {
+    color: var(--btn-color); 
+    padding: 18px;
+    font-size: 18px;
+  }
+
+  .control .btn.active {
+    color: var(--primary-color);
+  }
+  
+  .control .btn-toggle-play {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    font-size: 24px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+  }
+
+  .btn-light {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 10px;
+    padding: 10px;
+    color: var(--btn-color);
+    border-radius: 10px;
+    font-size: 24px;
+  }
+
+  .btn-playlist {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 10px;
+    padding: 10px;
+    color: var(--btn-color);
+    font-size: 24px;
+  }
+
+  .btn-close {
+    font-size: 20px;
+  }
+
+  .active {
+    color: var(--primary-color);
+  }
+  
+  .progress {
+    width: 100%;
+    -webkit-appearance: none;
+    height: 6px;
+    background: #fff;
+    outline: none;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+  }
+
+  .progress.light {
+    opacity: 0.7;
+    background: #d3d3d3;
+  }
+
+  .progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 6px;
+    background-color: var(--primary-color);
+    cursor: pointer;
+  }
+  
+  /* PLAYLIST */
+  .playlist {
+    margin-top: 426px;
+    padding: 12px;
+    background-color: var(--background-color);
+  }
+  
+  .my-playlists{
+    grid-template-columns: 1fr 1fr;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: auto;
+    display: none;
+    width: 100%;
+    background-color: var(--m-dashboard-color);
+    margin-top: 426px;
+  }
+
+  .my-playlists.enable {
+    display: grid;
+  }
+
+  .disable {
+    display: none;
+  }
+
+  .my-playlist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-color);
+    flex-wrap: wrap;
+    margin: 30px 10px 10px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .my-playlist .title {
+    margin-top: 10px;
+  }
+
+  .playlist-thumb {
+    width: 44vw;
+    height: 44vw;
+    background-size: cover;
+    border-radius: 10px;
+  }
+
+  .play-icon {
+    display: none;
+  }
+
+  .song {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    background-color: var(--dashboard-color);
+    padding: 8px 16px;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .song.active {
+    background-color: var(--primary-color);
+  }
+  
+  .song:active {
+    opacity: 0.8;
+  }
+  
+  .song.active .option,
+  .song.active .author,
+  .song.active .title {
+    color: #fff;
+  }
+  
+  .song .thumb {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-size: cover;
+    margin: 0 8px;
+  }
+  
+  .song .body {
+    flex: 1;
+    padding: 0 16px;
+  }
+  
+  .song .title {
+    font-size: 18px;
+    color: var(--text-color);
+  }
+  
+  .song .author {
+    font-size: 12px;
+    color: #999;
+  }
+  
+  .song .option {
+    padding: 16px 8px;
+    color: #999;
+    font-size: 18px;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
   

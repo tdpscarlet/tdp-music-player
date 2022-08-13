@@ -18,7 +18,6 @@ const playlist = $('.playlist');
 const themeBtn = $('.btn-light');
 const listsBtn = $('.btn-playlist');
 const myPlaylists = $('.my-playlists');
-const mediaQuery = window.matchMedia('(max-width: 1023px)')
 const app = {
     currentIndex: 0,
     currentPlaylist: 0,
@@ -194,12 +193,14 @@ const app = {
             };
         };
 
-        //Xử lý khi user chọn playlist
+        //Xử lý khi user chọn playlist phát
         myPlaylists.onclick = function(e) {
             const listNode = e.target.closest('.my-playlist:not(.active)');
-            if(listNode) {
+            if(listNode) {      
                 _this.currentPlaylist = listNode.dataset.indexNumber;
                 _this.renderSongs();
+                _this.currentIndex = 0;
+                _this.playedSong = [];
                 _this.loadCurrentSong();
                 _this.activeSong(); 
                 audio.play();
@@ -219,6 +220,13 @@ const app = {
             _this.isPLaylistON = !_this.isPLaylistON;
             myPlaylists.classList.toggle('enable', _this.isPLaylistON);
             listsBtn.classList.toggle('active', _this.isPLaylistON);
+            if(window.innerWidth <= 1023) {
+                if(_this.isPLaylistON) {
+                    playlist.classList.add('disable');
+                } else {
+                    playlist.classList.remove('disable');
+                }
+            }
         };
     },
 
@@ -287,7 +295,9 @@ const app = {
         const dashboard = $('.dashboard');
         const controlBtn = $$('.control .btn');
         if(!this.isDarkTheme) {
-            document.body.style.backgroundImage = 'url(./assets/img/bg/wp2448301.jpg)';
+            if(window.innerWidth > 1024){
+                document.body.style.backgroundImage = 'url(./assets/img/bg/wp2448301.jpg)';
+            }
             document.documentElement.style.setProperty('--background-color', '#f5f5f5');
             document.documentElement.style.setProperty('--text-color', '#333');
             document.documentElement.style.setProperty('--dashboard-color', 'rgba(255,255,255,.2)');
@@ -297,7 +307,9 @@ const app = {
             document.documentElement.style.setProperty('--scroll-bar-color', 'rgba(51,51,51,.3)');
             progress.classList.add('light');
         } else {
-            document.body.style.backgroundImage = 'url(./assets/img/bg/wp2448347.jpg';
+            if(window.innerWidth > 1024){
+                document.body.style.backgroundImage = 'url(./assets/img/bg/wp2448347.jpg';
+            }
             document.documentElement.style.setProperty('--background-color', '#51557E');
             document.documentElement.style.setProperty('--text-color', '#fff');
             document.documentElement.style.setProperty('--dashboard-color', 'rgba(0,0,0,.5)');

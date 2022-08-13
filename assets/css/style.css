@@ -59,6 +59,7 @@ html {
     width: 600px;
     backdrop-filter: blur(5px);
     transition: background-color .5s ease;
+    min-height: 480px;
   }
 
   /* HEADER */
@@ -189,7 +190,8 @@ html {
     max-height: 30rem;
     backdrop-filter: blur(5px);
     transition: background-color .5s ease;
-    min-width: 24.375rem;
+    min-width: 24.4rem;
+    max-width: 24.4rem;
   }
 
   .playlist::-webkit-scrollbar {
@@ -240,6 +242,11 @@ html {
     border-radius: 10px;
     cursor: pointer;
     font-size: 15px;
+    text-align: center;
+  }
+
+  .my-playlist h3 {
+    margin-top: 5px;
   }
 
   .playlist-thumb-wrapper{
@@ -274,7 +281,7 @@ html {
     align-items: center;
     justify-content: center;
     color: rgba(255, 255, 255, .8);
-    font-size: 80px;
+    font-size: 50px;
     display: flex;
     background-color: rgba(0, 0, 0, .2);
     visibility: hidden;
@@ -290,6 +297,7 @@ html {
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
     transition: background-color .5s ease;
     cursor: pointer;
+    max-height: 75px;
   }
 
   .song:hover {

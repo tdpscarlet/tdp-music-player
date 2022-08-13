@@ -104,19 +104,43 @@ var songs = [
             name:'80s Remix - Baby',
             singer:'Justin Bieber',
             path: './assets/music/2/80s_Remix-_Baby_-_Justin_Bieber.mp3',
-            image: './assets/img/picture.jpg'
+            image: './assets/img/80Remix.jpg'
         },
         {
             name:'80s Remix - Closer',
-            singer:'Linkin Park',
+            singer:'The Chainsmokers',
             path: './assets/music/2/80s_Remix-_-Closer-_-_The_Marlboro_Smokers.mp3',
-            image: './assets/img/picture.jpg'
+            image: './assets/img/80Remix.jpg'
+        },
+        {
+            name:'80s Remix - Focus',
+            singer:'Ariana Grande',
+            path: './assets/music/2/y2mate.com - 80s Remix Focus  Ariana Grande_320kbps.mp3',
+            image: './assets/img/80Remix.jpg'
         },
         {
             name:'80s Remix - What Do You Mean',
             singer:'Justin Bieber',
             path: './assets/music/2/80s_Remix-_Justin_Bieber_-_What_Do_You_Mean_it\'s_1985-.mp3',
-            image: './assets/img/picture.jpg'
+            image: './assets/img/80Remix.jpg'
+        },
+        {
+            name:'80s Remix - Love Me Harder',
+            singer:'Ariana Grande',
+            path: './assets/music/2/y2mate.com - 80s Remix  Love Me Harder_320kbps.mp3',
+            image: './assets/img/80Remix.jpg'
+        },
+        {
+            name:'80s Remix - Versace On The Floor',
+            singer:'Bruno Mars',
+            path: './assets/music/2/80s Remix Versace On The Floor.mp3',
+            image: './assets/img/80Remix.jpg'
+        },
+        {
+            name:'80s Remix - What Do You Mean',
+            singer:'Ariana Grande',
+            path: './assets/music/2/y2mate.com - 80s Remix Into You  Dangerous 80s_320kbps.mp3',
+            image: './assets/img/80Remix.jpg'
         },
     ]
 ];

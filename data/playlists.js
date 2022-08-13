@@ -6,8 +6,8 @@ var playlists = [
             image: './assets/img/picture.jpg'
         },
         {
-            name: 'NEW',
-            image: './assets/img/picture.jpg'
+            name: '80s Remix',
+            image: './assets/img/80Remix.jpg'
         },
         {
             name: 'This is a demo playlist so i have to make it very long',
