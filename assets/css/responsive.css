@@ -29,6 +29,7 @@
   header {
     text-align: center;
     margin-bottom: 10px;
+    margin-top: 40px;
   }
   
   header h4 {
@@ -149,7 +150,7 @@
   
   /* PLAYLIST */
   .playlist {
-    margin-top: 426px;
+    margin-top: 466px;
     padding: 12px;
     background-color: var(--background-color);
   }

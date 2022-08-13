@@ -137,9 +137,9 @@ var songs = [
             image: './assets/img/80Remix.jpg'
         },
         {
-            name:'80s Remix - What Do You Mean',
+            name:'80s Remix - Into You',
             singer:'Ariana Grande',
-            path: './assets/music/2/y2mate.com - 80s Remix Into You  Dangerous 80s_320kbps.mp3',
+            path: './assets/music/2/y2mate.com - 80s Remix Into You Dangerous 80s_320kbps.mp3',
             image: './assets/img/80Remix.jpg'
         },
     ]
